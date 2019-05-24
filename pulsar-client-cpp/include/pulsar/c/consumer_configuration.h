@@ -165,6 +165,9 @@ int pulsar_consumer_is_read_compacted(pulsar_consumer_configuration_t *consumer_
 void pulsar_consumer_set_read_compacted(pulsar_consumer_configuration_t *consumer_configuration,
                                         int compacted);
 
+void pulsar_consumer_set_pattern_auto_discovery_period(pulsar_consumer_configuration_t *consumer_configuration,
+                                        int periodSecs);
+                                        
 int pulsar_consumer_get_subscription_initial_position(
     pulsar_consumer_configuration_t *consumer_configuration);
 

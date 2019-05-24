@@ -22,15 +22,15 @@ package pulsar
 // #include <stdlib.h>
 import "C"
 import (
-	"unsafe"
 	"sync"
+	"unsafe"
 )
 
 // Inspired by https://github.com/mattn/go-pointer
 // Make sure the marker pointer is freed after restoring
 
 var (
-	mutex sync.Mutex
+	mutex    sync.Mutex
 	pointers = map[unsafe.Pointer]interface{}{}
 )
 

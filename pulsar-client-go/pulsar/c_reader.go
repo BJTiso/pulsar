@@ -25,9 +25,9 @@ package pulsar
 import "C"
 
 import (
+	"context"
 	"runtime"
 	"unsafe"
-	"context"
 )
 
 type reader struct {

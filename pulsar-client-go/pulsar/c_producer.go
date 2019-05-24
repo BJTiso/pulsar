@@ -252,7 +252,6 @@ func (p *producer) FlushAsync(callback func(error)) {
 	C._pulsar_producer_flush_async(p.ptr, savePointer(callback))
 }
 
-
 //export pulsarProducerFlushCallbackProxy
 func pulsarProducerFlushCallbackProxy(res C.pulsar_result, ctx unsafe.Pointer) {
 	callback := restorePointer(ctx).(func(error))

@@ -120,6 +120,10 @@ type ConsumerOptions struct {
 	//  failure or exclusive subscriptions). Attempting to enable it on subscriptions to a non-persistent topics or on a
 	//  shared subscription, will lead to the subscription call throwing a PulsarClientException.
 	ReadCompacted bool
+
+	// Set the interval between each pattern autodiscovery period (default: 60 seconds). This is only valid when TopicsPattern
+	// is set
+	PatternAutoDiscoveryPeriodSecs int
 }
 
 // An interface that abstracts behavior of Pulsar's consumer

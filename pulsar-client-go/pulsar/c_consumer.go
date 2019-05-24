@@ -139,6 +139,10 @@ func subscribeAsync(client *client, options ConsumerOptions, callback func(Consu
 
 	C.pulsar_consumer_set_read_compacted(conf, cBool(options.ReadCompacted))
 
+	if options.PatternAutoDiscoveryPeriodSecs > 0 && options.TopicsPattern != "" {
+		C.pulsar_consumer_set_pattern_auto_discovery_period(conf, C.int(options.PatternAutoDiscoveryPeriodSecs))
+	}
+
 	subName := C.CString(options.SubscriptionName)
 	defer C.free(unsafe.Pointer(subName))
 
@@ -205,7 +209,9 @@ func (c *consumer) Subscription() string {
 func (c *consumer) Unsubscribe() error {
 	channel := make(chan error)
 	c.UnsubscribeAsync(func(err error) {
-		channel <- err; close(channel) })
+		channel <- err
+		close(channel)
+	})
 	return <-channel
 }
 
